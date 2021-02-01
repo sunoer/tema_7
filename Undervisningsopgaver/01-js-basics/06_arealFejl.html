@@ -25,8 +25,19 @@
         function buttonClicked() {
             let længde = document.querySelector("#længde").value;
             let bredde = document.querySelector("#bredde").value;
-            //            let areal = længde * bredde;
-            let resultat = `Længden er ${længde} meter og bredden er ${bredde} meter. Arealet er ${areal(længde,bredde)}`;
+
+            let a = areal(længde, bredde);
+            let resultat;
+            if (isNaN(a)) {
+                resultat = "Det er ikke et tal, prøv igen!";
+
+            } else if (a <= 0) {
+
+                resultat = "arealet er mindre end nul, prøv igen!"
+            } else {
+                resultat = `Arealet er ${a}`;
+            }
+
             console.log(resultat);
 
         }
@@ -35,13 +46,6 @@
             return l * b;
 
         }
-
-
-        //        let længde = 31;
-        //        let bredde = 25;
-        //        let areal = længde * bredde;
-        //        let resultat = `Længden er ${længde} meter og bredden er ${bredde} meter. Arealet er ${areal}`;
-        //        console.log(resultat);
 
     </script>
 </body>
