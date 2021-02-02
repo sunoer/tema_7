@@ -9,11 +9,28 @@
 </head>
 
 <body>
+    <p>Gæt mit tal mellem 0 og 20</p>
+
+    <input type="text" id="gæt">
+
+    <button>Gæt!</button>
+    <butten id="nyt_spil">Nyt spil</butten>
+
+
     <script>
+        const tilfaeldigtTal = Math.round(Math.random() * 20);
+        document.querySelector("button").addEventListener("click", guessTal);
 
 
+        function guessTal(){
+            const guess = document.querySelector("gæt").value;
+//            console.log("tilfaeldigtTal", tilfaeldigtTal);
+            console.log("brugergæt", guess);
+            if (guess == tilfaeldigtTal) {
 
+            }
 
+        }
 
     </script>
 </body>

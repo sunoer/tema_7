@@ -9,11 +9,17 @@
 </head>
 
 <body>
+
+    <input type="text" id="længde" title="længde af timer">
+    <input type="button" id="minknap">
+
     <script>
+        window.addEventListener("load", loadSide);
 
-
-
-
+        funktion loadSide() {
+            console.log("Siden er loadet");
+            minKnap.addEventListener("click", knap);
+        }
 
     </script>
 </body>
