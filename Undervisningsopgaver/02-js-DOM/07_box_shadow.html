@@ -204,6 +204,18 @@
             // ------- tilføj article til section -----
             mainSection.appendChild(nyArticle);
 
+            billede1.style.boxShadow = "20px 19px 137px 46px rgba(139,58,207,0.6)";
+            billede2.style.boxShadow = "20px 19px 137px 46px rgba(139,58,207,0.6)";
+            nytBillede.style.boxShadow = "20px 19px 137px 46px rgba(139,58,207,0.6)";
+
+
+            billede1.addEventListener("mouseover", fjernskygge);
+            billede2.addEventListener("mouseover", fjernskygge);
+            nytBillede.addEventListener("mouseover", fjernskygge);
+
+            billede1.addEventListener("click", skiftBillede);
+
+
         }
 
         function skiftBillede() {
@@ -211,8 +223,21 @@
 
             let newPic1 = document.querySelector("article:nth-child(1) img");
 
-            newPic1.src = "https://placeimg.com/500/500/nature" + randomTal;
+            newPic1.src = "https://placeimg.com/640/480/nature" + randomTal;
         }
+
+                function fjernskygge() {
+                this.style.boxShadow = "none";
+                this.removeEventListener("mouseover", fjernskygge);
+                this.addEventListener("mouseout", addskygge);
+                }
+
+                function addskygge() {
+                this.style.boxShadow = "20px 19px 137px 46px rgba(139,58,207,0.6)";
+                this.removeEventListener("mouseout", addskygge);
+
+                this.addEventListener("mouseover", fjernskygge);
+                }
 
     </script>
 
