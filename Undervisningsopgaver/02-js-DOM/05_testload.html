@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-gap: 20px;
+        }
+
+        article {
+            border: solid 1px;
+            margin-left: 2rem;
+            margin-right: 2rem;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        header,
+        footer {
+            padding: 10px 0;
+            border: solid 1px #888;
+            text-align: center;
+        }
+
+        h2 {
+            padding-left: 2rem;
+        }
+
+        h3,
+        p {
+            padding: 5px;
+        }
+
+        main {
+            max-width: 1500px;
+            margin: 20px auto;
+        }
+
+        /*    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));*/
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+
+
+    <main>
+        <h2>undertitel</h2>
+
+        <section>
+
+            <article>
+                <img src="https://placeimg.com/640/480/nature" alt="nature">
+                <h3>Article 1</h3>
+                <p>No1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia nostrum placeat quis similique reprehenderit libero quisquam, quasi, cum natus adipisci culpa fugiat veritatis, eos provident minus accusamus ipsa blanditiis. Earum.</p>
+            </article>
+
+
+
+            <article>
+                <img src="https://placeimg.com/640/480/people" alt="people">
+                <h3>Article 2</h3>
+                <p>No2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum repellat quibusdam explicabo amet laborum, omnis eum repellendus, numquam molestias, dicta officia sequi! Quam itaque corporis, aut facere inventore repellendus reiciendis!</p>
+            </article>
+
+
+        </section>
+
+
+
+
+    </main>
+
+    <footer>footer tekst</footer>
+
+
+    <script>
+        // -------- opgave 05_testload--------
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("dom er loaded");
+
+
+
+            // -------- opgave 03_indhold--------
+
+            const billede1 = document.querySelector("article:nth-child(1) img");
+            const billede2 = document.querySelector("article:nth-child(2) img");
+            console.log(billede1);
+            console.log(billede2);
+
+            // ------- src ændre billedet -----
+            billede1.src = "https://placeimg.com/640/480/nature/grayscale";
+            billede2.src = "https://placeimg.com/640/480/people/grayscale";
+
+            // ------- alt ændre tekst på billedet -----
+            billede1.alt = "nature s/h";
+            billede2.alt = "mennesker s/h";
+
+
+            // ------- Alt herunder høre til opgave 2 - opdateret med input/tekst til denne opgave 03_indhold--------
+
+
+            const overskrift = document.querySelector("h1");
+            //        overskrift.textContent;
+            overskrift.textContent = "Susanne`s side";
+            console.log(overskrift.textContent);
+
+            const undertitel = document.querySelector("h2");
+            //        undertitel.textContent;
+            undertitel.textContent = "Mine billeder";
+            console.log(undertitel.textContent);
+
+            //        const billede1 = document.querySelector("img");
+            //        billede1.textContent;
+            //        console.log(billede1.textContent);
+
+            const articleOverskrift = document.querySelector("article:nth-child(1) h3");
+            articleOverskrift.textContent = "Natur billeder";
+            console.log(articleOverskrift.textContent);
+
+            const articleBrodtekst = document.querySelector("article:nth-child(1) p");
+            articleBrodtekst.textContent = "Billeder af den natur jeg har omkring mig og som jeg elsker så noget så højt. Går stort set ture og bruger turen hver eneste dag";
+            console.log(articleBrodtekst.textContent);
+
+            const articleOverskrift2 = document.querySelector("article:nth-child(2) h3");
+            articleOverskrift2.textContent = "Person billeder";;
+            console.log(articleOverskrift2.textContent);
+
+            const articleBrodtekst2 = document.querySelector("article:nth-child(2) p");
+            articleBrodtekst2.textContent = "Billeder af en masse forskellige mennesker, opdater siden og få et nyt billede frem";
+            console.log(articleBrodtekst2.textContent);
+
+            const footer = document.querySelector("footer");
+            footer.textContent = "Kontakt mig hvor du vil";
+            console.log(footer.textContent);
+
+
+            // ----------- Øvelse 04_appand --------
+
+
+            let mainSection = document.querySelector("section");
+
+            // ------ nyt article element -----
+            let nyArticle = document.createElement("article");
+
+            // ------- nyt img element ------
+            let nytBillede = document.createElement("img");
+
+
+            // ------ ny H# element -----
+            let overskriftH3 = document.createElement("h3");
+
+            // ------- ny tekst til overskrift ------
+            let overskriftTekst = document.createTextNode("article 3");
+
+            // ------ ny P element -----
+            let pElement = document.createElement("p");
+
+            // ------- ny tekst til p ------
+            let pTekst = document.createTextNode("Hej med jer her er lidt arkitektur");
+
+
+
+            // ------ Herunder tilføjes alle til selve siden -----
+
+            // -------- billede til img element ------
+            nytBillede.src = "https://placeimg.com/640/480/arch";
+
+            // ---------- indsæt tekst i overskrift ------
+            overskriftH3.appendChild(overskriftTekst);
+
+            // ---------- indsæt tekst i p ------
+            pElement.appendChild(pTekst);
+
+            // -------- Indsæt billede i acticle -----
+            nyArticle.appendChild(nytBillede);
+
+            // ------- tilføj overskrift til article -----
+            nyArticle.appendChild(overskriftH3);
+
+            // ------- tilføj p til article -----
+            nyArticle.appendChild(pElement);
+
+            // ------- tilføj article til section -----
+            mainSection.appendChild(nyArticle);
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
