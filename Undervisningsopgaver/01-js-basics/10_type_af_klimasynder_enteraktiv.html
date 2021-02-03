@@ -10,18 +10,58 @@
 
 <body>
 
-    <input type="text" id="længde" title="længde af timer">
-    <input type="button" id="minknap">
+    <p>Antal timer du rejser i fly</p>
+    <input type="text" id="længde">
+    <button>Klik her for at se resultat</button>
 
     <script>
-        window.addEventListener("load", loadSide);
+        document.querySelector("button").addEventListener("click", buttonclicked);
 
-        funktion loadSide() {
-            console.log("Siden er loadet");
-            minKnap.addEventListener("click", knap);
+        function buttonclicked() {
+            let timer = document.querySelector("#længde").value;
+            let kilo = 109;
+            let co2udledning = kiloTotalt(timer, kilo);
+
+            let resultat;
+
+            if (isNaN(co2udledning)) {
+                resultat = "Dette er ikke et tal, prøv igen!";
+            } else if (co2udledning < 100) {
+                resultat = `Ved ${timer} timer har du udledt ${kiloTotalt(timer, kilo)}. Tæt på Thunberg`;
+            } else if (co2udledning >= 100 && co2udledning < 200) {
+                resultat = `Ved ${timer} timer har du udledt ${kiloTotalt(timer, kilo)}. JA ja, du behøver ikke at melde dig ud af Å!`;
+            } else if (co2udledning > 200 && co2udledning < 600) {
+                resultat = `Ved ${timer} timer har du udledt ${kiloTotalt(timer, kilo)}. Det er godt for turismen i nordeuropa`;
+            } else if (co2udledning >= 600) {
+                resultat = `Ved ${timer} timer har du udledt ${kiloTotalt(timer, kilo)}. Nå ja, vi kan jo altid kolonisere en anden planet...`;
+            }
+
+            console.log(resultat);
+
         }
 
-    </script>
-</body>
+        function kiloTotalt(t, k) {
+            return t * k;
+        }
 
-</html>
+
+
+        //
+        //
+        // let timer = 15;
+        // let resultat = timer * 109;
+        //
+        //
+        // function udregning() {
+        // console.log("hent udregning");
+        //
+        // if (resultat < 100) { // console.log("Tæt på Thunberg"); // } else if (resultat < 100 || 200> resultat) {
+        // console.log("JA ja, du behøver ikke at melde dig ud af Å!");
+        // } else if (resultat < 200 || 600> resultat) {
+        // console.log("Det er godt for turismen i nordeuropa");
+        // } else if (resultat >= 600) {
+        // console.log("Nå ja, vi kan jo altid kolonisere en anden planet...");
+        // }
+        // }
+    </script>
+</body></html>
