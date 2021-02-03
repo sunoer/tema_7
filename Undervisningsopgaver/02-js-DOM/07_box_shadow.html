@@ -50,6 +50,7 @@
         }
 
         /*    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));*/
+
     </style>
 
 </head>
@@ -203,8 +204,6 @@
             // ------- tilføj article til section -----
             mainSection.appendChild(nyArticle);
 
-            billede1.addEventListener("click", skiftBillede);
-
         }
 
         function skiftBillede() {
@@ -212,9 +211,12 @@
 
             let newPic1 = document.querySelector("article:nth-child(1) img");
 
-            newPic1.src = "https://placeimg.com/640/480/nature" + randomTal;
+            newPic1.src = "https://placeimg.com/500/500/nature" + randomTal;
         }
+
     </script>
 
 
-</body></html>
+</body>
+
+</html>
