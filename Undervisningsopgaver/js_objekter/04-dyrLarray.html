@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+
+</head>
+
+<body>
+
+    <article></article>
+
+    <!--
+    <templte>
+        <article id="dyr">
+            <h3></h3>
+            <img src="" alt="">
+            <p> class="art"></p>
+            <p>class="sted"></p>
+        </article>
+    </templte>
+-->
+
+    <script>
+        let dyr = [{
+                "navn": "gris",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+                "levested": "svinefarme"
+            },
+            {
+                "navn": "Frø",
+                "type": "amfibier",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png",
+                "levested": "vandhullet"
+            },
+            {
+                "navn": "Ræv",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png",
+                "levested": "skoven"
+            },
+            {
+                "navn": "Sild",
+                "type": "fisk",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg",
+                "levested": "havet"
+            },
+            {
+                "navn": "Krokodille",
+                "type": "krybdyr",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg",
+                "levested": "floden"
+            }
+        ]
+
+        let elm = document.querySelector("article");
+        //løb igennem array "dyr"
+        dyr.forEach(etDyr => {
+            console.log(etDyr.navn);
+            elm.innerHTML += `<p>Navn: ${etDyr.navn} Type: ${etDyr.type} </p>`;
+        })
+    </script>
+
+</body></html>
+
+
