@@ -13,20 +13,26 @@
         window.addEventListener("load", udregning);
         let timer = 15;
         let resultat = timer * 109;
+        let klimaSynderKommentar;
 
 
         function udregning() {
             console.log("hent udregning");
 
             if (resultat < 100) {
-                console.log("Tæt på Thunberg");
+                klimaSynderKommentar = "Tæt på Thunberg.";
+
             } else if (resultat < 100 || 200 > resultat) {
-                console.log("JA ja, du behøver ikke at melde dig ud af Å!");
+                klimaSynderKommentar = "Ja ja, du behøver ikke at melde dig ud af Å!";
+
             } else if (resultat < 200 || 600 > resultat) {
-                console.log("Det er godt for turismen i nordeuropa");
+                klimaSynderKommentar = "Det er godt for turismen i nordeuropa.";
+
             } else if (resultat >= 600) {
-                console.log("Nå ja, vi kan jo altid kolonisere en anden planet...");
+                klimaSynderKommentar = "Nå ja vi kan jo altid kolonisere en anden planet ...";
             }
+
+            console.log(`Du har fløjet ${timer} timer og udledt ${resultat} kg CO2. ${klimaSynderKommentar}`);
         }
     </script>
 </body></html>

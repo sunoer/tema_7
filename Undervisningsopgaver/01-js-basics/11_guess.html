@@ -18,21 +18,43 @@
 
 
     <script>
-        const tilfaeldigtTal = Math.round(Math.random() * 20);
+        let tal = Math.round(Math.random() * 20);
+
+        //   console.log(tal);
+        let guess;
+        let antal = 1;
+
         document.querySelector("button").addEventListener("click", guessTal);
+        document.querySelector("#nyt_spil").addEventListener("click", nytSpil);
+
+                ducument.querySelector("#nyt_spil").style.visibility = "hidden";
+
+        function guessTal() {
+
+                        antalGæt++;
+             const guess = document.querySelector("#gæt").value;
+             console.log("brugergæt", guess);
+             guess = prompt("Gæt mit tal!");
+            if (guess == tal) {
+                console.log("Rigtigt du prøvede " + antal + " gange");
 
 
-        function guessTal(){
-            const guess = document.querySelector("gæt").value;
-//            console.log("tilfaeldigtTal", tilfaeldigtTal);
-            console.log("brugergæt", guess);
-            if (guess == tilfaeldigtTal) {
+                document.querySelector("#nyt_spil").style.visibility = "visible";
+                document.querySelector("button").style.visibility = "hidden";;
 
+            } else if (tal < guess) {
+                console.log("for lavt - prøv igen");
+                antal++;
+
+            } else {
+                console.log("for højt - prøv igen");
+                antal++;
             }
-
         }
 
-    </script>
-</body>
+        function nytSpil() {
 
-</html>
+            location.reload();
+        }
+    </script>
+</body></html>

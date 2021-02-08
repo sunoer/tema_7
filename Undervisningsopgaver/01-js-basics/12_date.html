@@ -31,28 +31,38 @@
 
         document.querySelector("button").addEventListener("click", button_clicked);
 
-        funktion button_clicked() {
-                dinAlder = document.querySelector("dinAlderTxt").value;
-                datesAlder = document.querySelector("dinDatesAlderTxt").value;
+        function button_clicked() {
+            dinAlder = document.querySelector("#dinAlderTxt").value;
+            datesAlder = document.querySelector("#dinDatesAlderTxt").value;
 
-                //            Hvad er det yngste din date må være
+            //            Hvad er det yngste din date må være
 
-                minimumAlder = Math.round(dinAlder / 2 + 7);
-                maximumAlder = Math.round((dinAlder - 7) * 2);
-                console.log("minimumAlder", minimumAlder);
-                console.log("maximumAlder", maximumAlder);
+            minimumAlder = Math.round(dinAlder / 2 + 7);
+            maximumAlder = Math.round((dinAlder - 7) * 2);
+            console.log("minimumAlder", minimumAlder);
+            console.log("maximumAlder", maximumAlder);
 
-                if (dinAlder < 15 || datesAlder < 15) {
-
-                    console.log("En af parterne er for unge");
-                } else {
-                    if (datesAlder >= minimumAlder && datesAlder <= maximumAlder) {
-                        console.log("Det er passende");
-
-                    } else if (datesAlder < maximumAlder) {
-                        console.log(`Du er ${dinAlder} og din date er ${minimumAlder - datesAlder} år for ung)
+            if (!Number(dinAlder) || dinAlder < 15 || !Number(datesAlder) || datesAlder < 15) {
+                //hvis bruger eller date er under den kriminelle lavalder, må de ikke bruge programmet
+                console.log("programmet er ikke for mindreårige");
+            } else {
+                //1. mulighed: daten ligger inden for rammerne
+                if (datesAlder >= minimumAlder && datesAlder <= maximumAlder) {
+                    console.log("Ok, det er passende");
+                } else if (datesAlder <= minimumAlder) {
+                    //2. mulighed: date er for ung
+                    console.log("Du er " + dinAlder + " og din date er " + datesAlder +
+                        "\nDin date er for " +
+                        (minimumAlder - datesAlder) + " år for ung");
+                } else if (datesAlder >= maximumAlder) {
+                    //3. mulighed: date er for ung
+                    console.log("Du er " + dinAlder + " og din date er " + datesAlder +
+                        "\nDin date er " +
+                        (datesAlder - maximumAlder) + " år for gammel!");
                 }
             }
+
+            //                if (dinAlder < 15 || datesAlder < 15) { // // console.log("En af parterne er for unge"); // } else { // if (datesAlder>= minimumAlder && datesAlder <= maximumAlder) { // console.log("Det er passende"); // // } else if (datesAlder < maximumAlder) { // console.log(`Du er ${dinAlder} og din date er ${minimumAlder - datesAlder} år for ung) // } // }
 
         }
 

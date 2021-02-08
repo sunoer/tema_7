@@ -1,67 +1,63 @@
 <!DOCTYPE html>
-<html lang="">
+<html>
 
 <head>
+    <title>test</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="">
 </head>
 
 <body>
+    <p>Hvor mange timer har du fløjet?</p>
 
-    <p>Antal timer du rejser i fly</p>
-    <input type="text" id="længde">
-    <button>Klik her for at se resultat</button>
+    <input type="text" id="timer">
+
+    <button>Giv mig dommen!</button>
+
+
 
     <script>
-        document.querySelector("button").addEventListener("click", buttonclicked);
+        let timer
+        let co2UdledtIKgVedFlyrejse;
+        let klimaSynderKommentar;
 
-        function buttonclicked() {
-            let timer = document.querySelector("#længde").value;
-            let kilo = 109;
-            let co2udledning = kiloTotalt(timer, kilo);
+        document.querySelector("button").addEventListener("click", buttonClicked);
 
-            let resultat;
+        function buttonClicked() {
+            timer = document.querySelector("#timer").value;
 
-            if (isNaN(co2udledning)) {
-                resultat = "Dette er ikke et tal, prøv igen!";
-            } else if (co2udledning < 100) {
-                resultat = `Ved ${timer} timer har du udledt ${kiloTotalt(timer, kilo)}. Tæt på Thunberg`;
-            } else if (co2udledning >= 100 && co2udledning < 200) {
-                resultat = `Ved ${timer} timer har du udledt ${kiloTotalt(timer, kilo)}. JA ja, du behøver ikke at melde dig ud af Å!`;
-            } else if (co2udledning > 200 && co2udledning < 600) {
-                resultat = `Ved ${timer} timer har du udledt ${kiloTotalt(timer, kilo)}. Det er godt for turismen i nordeuropa`;
-            } else if (co2udledning >= 600) {
-                resultat = `Ved ${timer} timer har du udledt ${kiloTotalt(timer, kilo)}. Nå ja, vi kan jo altid kolonisere en anden planet...`;
+            if (isNaN(timer) || timer == "") {
+
+                console.log("Du har ikke tastet et tal ind!");
+            } else {
+
+                co2UdledtIKgVedFlyrejse = Math.round(timer * 109);
+
+                if (co2UdledtIKgVedFlyrejse < 100) {
+
+                    klimaSynderKommentar = "Tæt på Thunberg.";
+
+                } else if (co2UdledtIKgVedFlyrejse < 200) {
+
+                    klimaSynderKommentar = "Ja ja, du behøver ikke at melde dig ud af Å!";
+
+
+                } else if (co2UdledtIKgVedFlyrejse < 600) {
+
+                    klimaSynderKommentar = "Det er godt for turismen i nordeuropa.";
+
+
+
+                } else {
+
+                    klimaSynderKommentar = "Nå ja vi kan jo altid kolonisere en anden planet ...";
+
+                }
+                console.log(`Du har fløjet ${timer} timer og udledt ${co2UdledtIKgVedFlyrejse} kg CO2. ${klimaSynderKommentar}`);
             }
-
-            console.log(resultat);
-
         }
 
-        function kiloTotalt(t, k) {
-            return t * k;
-        }
-
-
-
-        //
-        //
-        // let timer = 15;
-        // let resultat = timer * 109;
-        //
-        //
-        // function udregning() {
-        // console.log("hent udregning");
-        //
-        // if (resultat < 100) { // console.log("Tæt på Thunberg"); // } else if (resultat < 100 || 200> resultat) {
-        // console.log("JA ja, du behøver ikke at melde dig ud af Å!");
-        // } else if (resultat < 200 || 600> resultat) {
-        // console.log("Det er godt for turismen i nordeuropa");
-        // } else if (resultat >= 600) {
-        // console.log("Nå ja, vi kan jo altid kolonisere en anden planet...");
-        // }
-        // }
     </script>
-</body></html>
+</body>
+
+</html>
