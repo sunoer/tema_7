@@ -14,19 +14,31 @@
 
         main {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             grid-gap: 10px;
-            max-width: 1500px;
             margin: 0 auto;
+            max-width: 1200px;
         }
 
         img {
             width: 100%;
+
         }
 
         article {
-            border: 2px solid pink;
+            border: 2px solid #079d86;
             min-height: 100px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        body {
+            background-color: #ddf2ef;
+        }
+
+        header {
+            text-align: center;
+            color: #079d86;
         }
     </style>
 
@@ -35,7 +47,15 @@
 <body>
 
     <header>
-        <nav></nav>
+        <h1>Bisto Babuska</h1>
+        <nav>
+            <button data-alle="alle" class="valgt">Alle</button>
+            <button data-forretter="forretter" class="valgt">Forretter</button>
+            <button data-hovedretter="hovedretter" class="valgt">hovedretter</button>
+            <button data-desserter="desserter" class="valgt">Desserter</button>
+            <button data-sideordres="sideordres" class="valgt">Sideordres</button>
+            <button data-drikkevarer="drikkevarer" class="valgt">Drikkevarer</button>
+        </nav>
     </header>
 
     <main></main>
@@ -45,7 +65,7 @@
             <img src="" alt="" class="billede">
             <h2 class="navn"></h2>
             <h3 class="pris"></h3>
-            <p class="kategori">pris</p>
+            <p class="kategori"></p>
             <p class="kortbeskrivelse"></p>
             <p class="langbeskrivelse"></p>
             <p class="oprindelsesregion"></p>
@@ -54,8 +74,27 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", hentData);
-        console.log("DOM er losded");
+        document.addEventListener("DOMContentLoaded", start);
+        console.log("DOM er loaded");
+
+        let ret;
+        let filter = "alle";
+
+        function start() {
+            const filterKnapper = document.querySelectorAll("nav button");
+            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerRet));
+            hentData();
+        }
+
+        function filtrerRet() {
+            filter = this.dataset.troende;
+            document.querySelector(".valgt").classList.remove("valgt");
+            this.classList.add("valgt");
+            visRet();
+            header.textContent = this.textContent;
+
+        }
+
 
         const url = "https://babushka-dd8a.restdb.io/rest/menu";
         const medieurl = "https://babushka-dd8a.restdb.io/media/";
@@ -75,7 +114,6 @@
             const json = await resspons.json();
             vis(json);
         }
-
 
 
         function vis(json) {
