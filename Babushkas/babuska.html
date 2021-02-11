@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="da">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="">
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+    </style>
     <style>
         * {
             box-sizing: border-box;
@@ -14,8 +16,8 @@
 
         main {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
             margin: 0 auto;
             max-width: 1200px;
         }
@@ -25,20 +27,161 @@
 
         }
 
+        h1,
+        h2 {
+            font-family: 'Cinzel Decorative', cursive;
+
+        }
+
         article {
             border: 2px solid #079d86;
             min-height: 100px;
             border-radius: 10px;
             padding: 10px;
+            margin: 10px;
         }
 
         body {
             background-color: #ddf2ef;
+            overflow: hidden;
         }
 
         header {
             text-align: center;
+            color: #058d78;
+            padding: 30px;
+        }
+
+        header img {
+            width: 100%;
+        }
+
+        .valgt {
+            background-color: white;
             color: #079d86;
+
+        }
+
+        button {
+            background-color: #079d86;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            border: 2px solid #058d78;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        #burgerknap {
+            display: none;
+
+        }
+
+        @media (max-width: 650px) {
+
+
+
+            main {
+                max-width: auto;
+                width: 100%;
+            }
+
+            nav ul li {
+                display: block;
+            }
+
+            header img {
+                width: 100%;
+            }
+
+            .menulink {
+                display: none;
+            }
+
+            .menulinklast {
+                display: none;
+            }
+
+            .burgermenu {
+                display: block;
+                float: right;
+                font-size: 25px;
+                padding: 0;
+                text-align: right;
+                height: 50px;
+                width: 100%;
+            }
+
+            #burgerknap {
+                margin-right: 3rem;
+                margin-top: 1rem;
+                display: inline-block;
+                cursor: pointer;
+
+            }
+
+            .burgerknap {
+                margin-right: 2rem;
+
+            }
+
+            .hidden {
+                opacity: 0;
+                transform: translateX(100%);
+
+            }
+
+            .burgermenulink {
+                font-family: 'Poppins', sans-serif;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            #burgersection {
+                position: relative;
+                transition: transform 0.3s;
+                background: #ddf2ef;
+                margin-top: 1.5rem;
+                /*        height: 35rem;*/
+                line-height: 40px;
+                z-index: 2;
+            }
+
+            #burgersection li {
+                margin-top: -0.75rem;
+                margin-right: 2rem;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .burgermenulink:link {
+                color: black;
+
+            }
+
+            .burgermenulink:visited {
+                color: black;
+            }
+
+            .burgermenulink:after {
+                background: none repeat scroll 0 0 transparent;
+                bottom: 0;
+                content: "";
+                display: block;
+                height: 1.5px;
+                left: 50%;
+                position: absolute;
+                background: #ef0f0f;
+                transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                width: 0;
+            }
+
+            .burgermenulinklast:hover:after {
+                width: 100%;
+                left: 0;
+            }
         }
     </style>
 
@@ -47,28 +190,36 @@
 <body>
 
     <header>
-        <h1>Bisto Babuska</h1>
-        <nav>
-            <button data-alle="alle" class="valgt">Alle</button>
-            <button data-forretter="forretter" class="valgt">Forretter</button>
-            <button data-hovedretter="hovedretter" class="valgt">hovedretter</button>
-            <button data-desserter="desserter" class="valgt">Desserter</button>
-            <button data-sideordres="sideordres" class="valgt">Sideordres</button>
-            <button data-drikkevarer="drikkevarer" class="valgt">Drikkevarer</button>
+        <img src="Artboard%204.png" alt="logo">
+
+        <h2>MENUKORT</h2>
+        <nav class="burgermenu">
+            <div id="burgerknap">☰</div>
+            <ul style="list-style: none;" id="burgersection" class="hidden">
+                <li><button data-kategori="alle" class="valgt">Alle</button></li>
+                <li> <button data-kategori="forretter">Forretter</button></li>
+                <li><button data-kategori="hovedretter">Hovedretter</button></li>
+                <li><button data-kategori="desserter">Desserter</button></li>
+                <li><button data-kategori="sideordres">Sideordres</button></li>
+                <li><button data-kategori="drikkevarer">Drikkevarer</button></li>
+            </ul>
         </nav>
+
     </header>
 
-    <main></main>
+    <main>
+        <section></section>
+    </main>
 
     <template>
         <article>
             <img src="" alt="" class="billede">
-            <h2 class="navn"></h2>
-            <h3 class="pris"></h3>
-            <p class="kategori"></p>
+            <h3 class="navn"></h3>
+            <h4 class="pris"></h4>
             <p class="kortbeskrivelse"></p>
             <p class="langbeskrivelse"></p>
             <p class="oprindelsesregion"></p>
+            <p class="kategori"></p>
         </article>
     </template>
 
@@ -77,61 +228,101 @@
         document.addEventListener("DOMContentLoaded", start);
         console.log("DOM er loaded");
 
-        let ret;
+        const header = document.querySelector("header h2");
+        const url = "https://babushka-dd8a.restdb.io/rest/menu";
+        const medieurl = "https://babushka-dd8a.restdb.io/media/";
+
+        const myHeaders = {
+
+
+
+            "x-apikey": "600ec2fb1346a1524ff12de4"
+        }
+
+        ////        const options = {
+        // // headers: {
+        // // 'x-apikey': "600ec2fb1346a1524ff12de4"
+        // // }
+        // };
+
+        let retter;
         let filter = "alle";
 
         function start() {
             const filterKnapper = document.querySelectorAll("nav button");
-            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerRet));
-            hentData();
+            document.querySelector("#burgerknap").addEventListener("click", toggleMenu);
+            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerRetter));
+            loadJSON();
         }
 
-        function filtrerRet() {
-            filter = this.dataset.troende;
+        function filtrerRetter() {
+            filter = this.dataset.kategori;
             document.querySelector(".valgt").classList.remove("valgt");
             this.classList.add("valgt");
-            visRet();
+            visRetter();
             header.textContent = this.textContent;
 
         }
 
-
-        const url = "https://babushka-dd8a.restdb.io/rest/menu";
-        const medieurl = "https://babushka-dd8a.restdb.io/media/";
-
-        const options = {
-            headers: {
-                'x-apikey': "600ec2fb1346a1524ff12de4"
-            }
-
-        };
-
-        const main = document.querySelector("main");
-        const template = document.querySelector("template").content;
-
-        async function hentData() {
-            const resspons = await fetch(url, options);
-            const json = await resspons.json();
-            vis(json);
+        async function loadJSON() {
+            const JSONData = await fetch("https://babushka-dd8a.restdb.io/rest/menu", {
+                headers: myHeaders
+            });
+            retter = await JSONData.json();
+            console.log("Menu", retter);
+            visRetter();
         }
 
 
-        function vis(json) {
-            console.log(json);
-            json.forEach(ret => {
-                const klon = template.cloneNode(true);
-                klon.querySelector(".billede").src = medieurl + ret.billede[0];
-                klon.querySelector(".navn").textContent = ret.navn;
-                klon.querySelector(".pris").textContent = ret.pris;
-                klon.querySelector(".kategori").textContent = ret.kategori;
-                klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
-                klon.querySelector(".langbeskrivelse").textContent = ret.langbeskrivelse;
-                klon.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
-
-                main.appendChild(klon);
+        //        async function hentData() {
+        //            const resspons = await fetch(url, options);
+        //            const retter = await resspons.json();
+        //            visRetter();
+        //        }
 
 
+        function visRetter() {
+            const main = document.querySelector("section");
+            const template = document.querySelector("template").content;
+            main.textContent = "";
+            console.log(visRetter);
+            retter.forEach(ret => {
+                if (filter == ret.kategori || filter == "alle") {
+                    const klon = template.cloneNode(true);
+                    klon.querySelector(".billede").src = medieurl + ret.billede[0];
+                    klon.querySelector(".navn").textContent = ret.navn;
+                    klon.querySelector(".pris").textContent = ret.pris + " KR";
+                    klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
+                    klon.querySelector(".kategori").textContent = ret.kategori;
+                    //                    klon.querySelector(".langbeskrivelse").textContent = ret.langbeskrivelse;
+                    //                    klon.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
+                    klon.querySelector(".billede").addEventListener("click", () => visDetaljer(ret));
+                    main.appendChild(klon);
+
+                }
             })
+        }
+
+        function visDetaljer(retten) {
+            location.href = `singleView.html?id=${retten._id}`;
+        }
+
+
+        // burger menu --------------->
+
+
+        function toggleMenu() {
+            console.log("toggleMenu");
+
+            document.querySelector("#burgersection").classList.toggle("hidden");
+
+            let erSkjult = document.querySelector("#burgersection").classList.contains("hidden");
+
+            if (erSkjult === true) {
+                document.querySelector("#burgerknap").textContent = "☰";
+            } else {
+                document.querySelector("#burgerknap").textContent = "x";
+            }
         }
     </script>
 
